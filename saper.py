@@ -2,6 +2,7 @@ import random
 import time
 
 from PyQt6.QtGui import *
+from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import *
 
@@ -72,6 +73,10 @@ class Cell(QWidget):
     def reveal_self(self):
         self.is_revealed = True
         self.update()
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.click()
 
 
 class MainWindow(QMainWindow):
